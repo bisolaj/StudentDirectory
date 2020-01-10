@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, EventEmitter, Output } from '@angular/core';
 import { Student } from '../interfaces/student';
 import { DataService } from '../services/data.service';
 
@@ -8,12 +8,22 @@ import { DataService } from '../services/data.service';
   styleUrls: ['./list.component.scss']
 })
 export class ListComponent implements OnInit {
+  
+  @Output() selectedStudent = new EventEmitter();
+
   students: Student[] = [];
   constructor(private dataService: DataService) {
     this.students=dataService.getStudent();
    }
 
   ngOnInit() {
+  }
+
+  studentClicked(person: Student) {
+    //alert(person.fName);
+    //set values
+    //this.dataService.setCardData(person);
+    this.selectedStudent.emit(person);
   }
 
 }

@@ -5,6 +5,8 @@ import { Student } from '../interfaces/student';
   providedIn: 'root'
 })
 export class DataService {
+  private cardData: Student;
+
   private studentData: Student[] =
   [
     {fName:'Jon',lName:'Stewart',sName:'JonSte',nName:'JSte',hobbies:'Games'},
@@ -18,6 +20,14 @@ export class DataService {
       return this.studentData;
   }
 
-  
+  setCardData(person: Student) {
+    //save the student data into 
+    this.cardData=person;
+  }
+
+  getCardData(): Student {
+    //retrieve student data for card
+    return this.cardData;
+  }
 
 }
